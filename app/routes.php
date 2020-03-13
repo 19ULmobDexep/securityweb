@@ -4,6 +4,11 @@ declare(strict_types=1);
 use App\Application\Actions\User\ListUsersAction;
 use App\Application\Actions\User\ViewUserAction;
 use App\Application\Actions\User\UpdateUserAction;
+
+use App\Application\Actions\User\ListJobDatingAction;
+use App\Application\Actions\User\ViewJobDatingAction;
+use App\Application\Actions\User\UpdateJobDatingAction;
+
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
@@ -16,17 +21,19 @@ return function (App $app) {
     });
 
     $app->group('/jobdatings', function (Group $group) {
-        $group->get('', function(){});
-        $group->post('', function(){});
-        $group->get('/{id}', function(){});
-        $group->put('/{id}', function(){});
-        $group->delete('/{id}', function(){});
 
-        $group->post('/{id}/{listName}', function(){});
+        $group->get('', ListJobDatingAction::class);
+        $group->post('',ListJobDatingAction::class);
+        $group->get('/{id}',ViewJobDatingAction::class);
+        $group->put('/{id}',UpdateJobDatingAction::class);
+        $group->delete('/{id}',ListJobDatingAction::class);
 
-        $group->get('/{id}/{listName}/{listId}', function(){});
-        $group->put('/{id}/{listName}/{listId}', function(){});
-        $group->delete('/{id}/{listName}/{listId}', function(){});
+        $group->post('/{id}/{listName}/{listId}', ListJobDatingAction::class);
+
+        $group->get('/{id}/{listName}/{listId}', ViewJobDatingAction::class);
+        $group->put('/{id}/{listName}/{listId}', UpdateJobDatingAction::class);
+        $group->delete('/{id}/{listName}/{listId}', ListJobDatingAction::class);
+
     });
 
 
