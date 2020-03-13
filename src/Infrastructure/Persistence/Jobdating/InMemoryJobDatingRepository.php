@@ -25,11 +25,11 @@ class InMemoryJobDatingRepository implements JodDatingRepository
     }
     private function load(){
             return [
-            1 => new Jobdating(),
-            2 => new Jobdating(),
-            3 => new Jobdating(),
-            4 => new Jobdating(),
-            5 => new Jobdating(),
+            1 => new Jobdating(1,'jobdating number one' ),
+            2 => new Jobdating(2,),
+            3 => new Jobdating(3,),
+            4 => new Jobdating(4,),
+            5 => new Jobdating(5,),
         ];
     }
 
